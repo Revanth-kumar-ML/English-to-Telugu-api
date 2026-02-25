@@ -1,43 +1,23 @@
-const form = document.getElementById("uploadForm");
-const statusDiv = document.getElementById("status");
-const output = document.getElementById("output");
+function translateTextToTelugu() {
+    const sentence_english = document.getElementById("englishTextForTelugu").value;
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const audioFile = document.getElementById("audio").files[0];
-    const task = document.getElementById("task").value;
-
-    if (!audioFile) {
-        alert("Please select an audio file");
+    if (!sentence_english) {
+        alert("Please enter text");
         return;
     }
 
-    const formData = new FormData();
-    formData.append("audio", audioFile);
-    formData.append("task", task);
-
-    statusDiv.innerText = "Processing...";
-    output.value = "";
-
-    try {
-        const response = await fetch("/speech-to-text", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (data.error) {
-            statusDiv.innerText = "Error";
-            output.value = data.error;
-        } else {
-            statusDiv.innerText = `Done in ${data.time_taken}`;
-            output.value = data.text;
-        }
-
-    } catch (err) {
-        statusDiv.innerText = "Request failed";
-        output.value = err.toString();
-    }
-});
+    fetch("http://127.0.0.1:5000/english-to-telugu", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ sentence: sentence_english })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("output").innerText = data.translated_text;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}

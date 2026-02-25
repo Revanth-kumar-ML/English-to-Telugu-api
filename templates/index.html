@@ -2,29 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Speech to Text (Whisper)</title>
+    <title>English to Telugu Translator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Speech to Text</h1>
 
-        <form id="uploadForm">
-            <input type="file" id="audio" name="audio" accept="audio/*" required>
+<div class="container">
+    <h1>English ➜ Telugu Translator</h1>
 
-            <select id="task" name="task">
-                <option value="transcribe">Transcribe</option>
-                <option value="translate">Translate to English</option>
-            </select>
+    <textarea id="englishTextForTelugu" placeholder="Enter English text..."></textarea>
 
-            <button type="submit">Upload & Convert</button>
-        </form>
+    <button onclick="translateTextToTelugu()">Translate</button>
 
-        <div id="status"></div>
+    <h3>Telugu Translation:</h3>
+    <div id="output"></div>
+</div>
 
-        <textarea id="output" placeholder="Transcription will appear here..."></textarea>
-    </div>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

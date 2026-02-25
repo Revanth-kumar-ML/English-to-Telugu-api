@@ -1,53 +1,37 @@
 body {
     font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: #e5e7eb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .container {
-    background: #020617;
-    padding: 25px;
-    width: 420px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    width: 500px;
+    margin: 60px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-input, select, button, textarea {
+textarea {
     width: 100%;
-    margin-top: 10px;
+    height: 100px;
+    margin-bottom: 10px;
     padding: 10px;
-    border-radius: 6px;
-    border: none;
-    font-size: 14px;
 }
 
 button {
-    background: #2563eb;
+    padding: 10px 15px;
+    background: #4CAF50;
     color: white;
+    border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background: #1d4ed8;
+    background: #45a049;
 }
 
-textarea {
-    margin-top: 15px;
-    height: 140px;
-    resize: none;
-}
-
-#status {
+#output {
     margin-top: 10px;
-    font-size: 13px;
-    color: #38bdf8;
+    font-size: 18px;
+    color: #333;
 }
