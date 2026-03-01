@@ -13,11 +13,6 @@ eng_to_hin_model_name = "Helsinki-NLP/opus-mt-en-hi"
 eng_to_hin_tokenizer = AutoTokenizer.from_pretrained(eng_to_hin_model_name)
 eng_to_hin_model = AutoModelForSeq2SeqLM.from_pretrained(eng_to_hin_model_name)
 
-# Function to translate text from English to Hindi
-def translate_eng_to_hin(text):
-    inputs = eng_to_hin_tokenizer(text, return_tensors="pt")
-    outputs = eng_to_hin_model.generate(**inputs)
-    return eng_to_hin_tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 # Function to translate text from English to Telugu
 def translate_eng_to_tel(text):
@@ -35,16 +30,6 @@ def english_to_telugu_api():
     }
     return jsonify(response_json)
 
-@application.route("/english-to-hindi", methods=["POST"])
-def english_to_hindi_api():
-    sentence = request.json["sentence"]
-    translated_text = translate_eng_to_hin(sentence)
-    print(translated_text + "hindi")
-    response_json = {
-        "original_text": sentence,
-        "translated_text": translated_text
-    }
-    return jsonify(response_json)
 
 
 @application.route("/")

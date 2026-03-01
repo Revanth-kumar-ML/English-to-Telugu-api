@@ -6,7 +6,7 @@ function translateTextToTelugu() {
         return;
     }
 
-    fetch("http://127.0.0.1:5000/english-to-telugu", {
+    fetch("/english-to-telugu", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
